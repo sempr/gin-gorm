@@ -19,8 +19,10 @@ func ensureTableExists() {
 }
 
 func clearTable() {
-	a.DB.Unscoped().Delete(&product{})
-	a.DB.Exec("delete from sqlite_sequence where name='products';")
+	a.DB.DropTable(&product{})
+	ensureTableExists()
+	//a.DB.Unscoped().Delete(&product{})
+	//a.DB.Exec("delete from sqlite_sequence where name='products';")
 }
 
 func TestMain(m *testing.M) {
