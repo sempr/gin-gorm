@@ -56,7 +56,6 @@ func (a *App) getProduct(c *gin.Context) {
 		return
 	}
 	respondWithJSON(c, http.StatusOK, p)
-	return
 }
 
 func (a *App) getProducts(c *gin.Context) {
