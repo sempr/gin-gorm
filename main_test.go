@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"testing"
 
-	_ "github.com/jinzhu/gorm/dialects/sqlite"
+	_ "gorm.io/driver/sqlite"
 )
 
 var a App
@@ -19,7 +19,7 @@ func ensureTableExists() {
 }
 
 func clearTable() {
-	a.DB.DropTable(&product{})
+	a.DB.Migrator().DropTable(&product{})
 	ensureTableExists()
 	//a.DB.Unscoped().Delete(&product{})
 	//a.DB.Exec("delete from sqlite_sequence where name='products';")

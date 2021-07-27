@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	_ "github.com/jinzhu/gorm/dialects/sqlite"
+	_ "gorm.io/driver/sqlite"
 )
 
 func main() {

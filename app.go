@@ -5,7 +5,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/jinzhu/gorm"
+	"gorm.io/driver/sqlite"
+	"gorm.io/gorm"
 )
 
 // App hold an gin.Engine and a gorm.DB
@@ -17,7 +18,7 @@ type App struct {
 // Initialize the app with db config
 func (a *App) Initialize(dbType, dbString string) {
 	var err error
-	a.DB, err = gorm.Open(dbType, dbString)
+	a.DB, err = gorm.Open(sqlite.Open(dbString))
 	if err != nil {
 		log.Fatal(err)
 	}
